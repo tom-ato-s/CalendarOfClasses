@@ -2,6 +2,8 @@ package Day;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DayVew extends JPanel{
 
@@ -54,7 +56,7 @@ public class DayVew extends JPanel{
         class3.addItem("Разукрашивание");
         add(class2);
 
-        this.setBorder(BorderFactory.createTitledBorder("panel" + n));
+        this.setBorder(BorderFactory.createTitledBorder("День недели" +" " + new SimpleDateFormat("EE").format(new Date())));
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setAutoCreateGaps(true);
@@ -91,8 +93,7 @@ public class DayVew extends JPanel{
         jframe.setLayout(new BoxLayout(jframe.getContentPane(), BoxLayout.Y_AXIS));
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.add(new DayVew(1));
-        jframe.add(new DayVew(1));
-        jframe.add(new DayVew(1));
+
        // jframe.add(Box.createVerticalGlue());
         jframe.pack();
         jframe.setLocationRelativeTo(null);
