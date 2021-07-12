@@ -3,6 +3,10 @@ package Day;
 import javax.swing.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Date;
 
 public class DayVew extends JPanel{
@@ -56,7 +60,11 @@ public class DayVew extends JPanel{
         class3.addItem("Разукрашивание");
         add(class2);
 
-        this.setBorder(BorderFactory.createTitledBorder("День недели" +" " + new SimpleDateFormat("EE").format(new Date())));
+
+        String nowDay = CalculationDeyOfWeek.NowDayClass();
+        String nowWeek = CalculationDeyOfWeek.NawWeek();
+        //       CalculationDeyOfWeek.calculationDeyOfWeek()
+        this.setBorder(BorderFactory.createTitledBorder(nowDay + " " + nowWeek));
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setAutoCreateGaps(true);
