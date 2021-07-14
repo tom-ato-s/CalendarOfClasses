@@ -27,44 +27,44 @@ public class DayVew extends JPanel{
 
     public DayVew(int n) {
   //      this.day = day;
-
+           // Создание элементов окна "День"
          JPanel panelDay = new JPanel();
-         JLabel namber1 = new JLabel("Занятие 1");
-         JLabel namber2 = new JLabel("Занятие 2");
-         JLabel namber3 = new JLabel("Занятие 3");
+         JLabel namber1 = new JLabel("1");
+         JLabel namber2 = new JLabel("2");
+         JLabel namber3 = new JLabel("3");
+
          JComboBox<String> class1 = new JComboBox<String>();
+        class1.addItem("  ");
         class1.addItem("Рисование");
         class1.addItem("Лепка");
         class1.addItem("Физическое виспитание");
-        class1.addItem("Ознакомление с окружающей стредой");
+        class1.addItem("Окружающий мир");
         class1.addItem("Вырезание");
         class1.addItem("Разукрашивание");
         add(class1);
 
-
          JComboBox<String> class2 = new JComboBox<String>();
-        class2.addItem("Рисование");
-        class2.addItem("Лепка");
-        class2.addItem("Физическое виспитание");
-        class2.addItem("Ознакомление с окружающей стредой");
-        class2.addItem("Вырезание");
-        class2.addItem("Разукрашивание");
-        add(class2);
+        class2.removeAllItems();
+        for (int t = 0; t < class1.getItemCount(); t++)
+        {
+            class2.addItem(class1.getItemAt(t));
+        }
 
         JComboBox<String> class3 = new JComboBox<String>();
-        class3.addItem("Рисование");
-        class3.addItem("Лепка");
-        class3.addItem("Физическое виспитание");
-        class3.addItem("Ознакомление с окружающей стредой");
-        class3.addItem("Вырезание");
-        class3.addItem("Разукрашивание");
-        add(class2);
+        class3.removeAllItems();
+        for (int t = 0; t < class1.getItemCount(); t++)
+        {
+            class3.addItem(class1.getItemAt(t));
+        }
 
 
+            //вставка даты и ня недели в окно "День"
         String nowDay = CalculationDeyOfWeek.NowDayClass();
         String nowWeek = CalculationDeyOfWeek.NawWeek();
         //       CalculationDeyOfWeek.calculationDeyOfWeek()
-        this.setBorder(BorderFactory.createTitledBorder(nowDay + " " + nowWeek));
+
+
+        this.setBorder(BorderFactory.createTitledBorder(nowWeek + " " + nowDay));
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setAutoCreateGaps(true);
@@ -98,14 +98,43 @@ public class DayVew extends JPanel{
 
     private static void initFrameDay() {
         JFrame jframe = new JFrame("Калегндарь занятий на день");
-        jframe.setLayout(new BoxLayout(jframe.getContentPane(), BoxLayout.Y_AXIS));
-        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jframe.add(new DayVew(1));
+        JPanel panel = new JPanel();
 
-       // jframe.add(Box.createVerticalGlue());
+// add something to you panel...
+// panel.add(...);
+
+
+
+        panel.add(new DayVew(1));
+//        panel.add(new DayVew(2));
+//        panel.add(new DayVew(3));
+//        panel.add(new DayVew(4));
+//        panel.add(new DayVew(5));
+//        panel.add(new DayVew(6));
+//        panel.add(new DayVew(7));
+
+
+// add the panel to a JScrollPane
+        JScrollPane jScrollPane = new JScrollPane(panel);
+// only a configuration to the jScrollPane...
+        jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+// Then, add the jScrollPane to your frame
+        jframe.getContentPane().add(jScrollPane);
+
+
+
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+ // panel.setLayout(new BoxLayout(jframe.getContentPane(), BoxLayout.Y_AXIS));
+     //   panel.add(Box.createVerticalGlue());
+
         jframe.pack();
         jframe.setLocationRelativeTo(null);
         jframe.setVisible(true);
+
 
         //        panelDay.add(dayTitle, BorderLayout.NORTH);
 //        panelDay.add(data);
@@ -125,10 +154,21 @@ public class DayVew extends JPanel{
                     public void run() {
 //                        Day day = new Day();
 //                        dayVew = new DayVew(day);
-                       initFrameDay();
+ //                      initFrameDay();
                     }
                 }
         );
 
+
+
+        Table table = new Table();
+        table.addToArr("Лепка");
+        table.addToArr("Рисование");
+        table.addToArr("Английский");
+        table.printArr();
+        table.addToArr("Лепка");
+
+        table.replaceToArr("Физическое воспитание","Рисование");
+        table.printArr();
     }
 }
