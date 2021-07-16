@@ -13,7 +13,7 @@ class CalculationDeyOfWeek {
 
     public static String getStringDayOfWeek(LocalDate date3) {
         DayOfWeek dayOfWeek = date3.getDayOfWeek();
-        System.out.println("dayOfWeek.toString()" + dayOfWeek.toString());
+ //       System.out.println("dayOfWeek.toString()" + dayOfWeek.toString());
         return dayOfWeek.toString();
     }
 
