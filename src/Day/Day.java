@@ -4,47 +4,18 @@ import javax.swing.*;
 
 
 public class Day {
-    private static DayVew dayVew;
-    private static DayModel dayModel;
+    private static DayVew dayVew = new DayVew();
+    private static DayModel dayModel = new DayModel();
 
 
     public static void main(String[] args) {
-        dayVew = new DayVew();
-        dayModel = new DayModel();
-        dayVew.initFrameDay();
 
-//        SwingUtilities.invokeLater(
-//                new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                        new  dayVew.initFrameDay();
-//                    }
-//                }
-
-
-
-//        );
-
-
-
-
-
-        }
+        SwingUtilities.invokeLater(new Runnable() {
+//                               @Override
+            public void run() {
+                dayVew.initFrameDay();
+                    }
+                }
+        );
     }
-
-
-
-////        //создать фрейм в потоке деспетчеризации событий
-////        SwingUtilities.invokeLater(
-////                new Runnable() {
-////                    public void run() {
-////                        Day day = new Day();
-////                        dayVew = new DayVew(day);
-////                        dayVew.initFrameDay();
-////                    }
-////                }
-////        );
-////
-////    }
-//}
+}
